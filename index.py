@@ -4,8 +4,13 @@ from datetime import datetime
 from tool import tool
 import asyncio
 
+#Iniliza A Classe data
 data_Local = data()
 
+#LINCEÇA MIT
+#By: Gustavo Quitto
+
+#Runtime
 async def Start():
     tool.menu(data_Local)
     print("1. Assesar Odette")
@@ -80,3 +85,5 @@ if __name__ == "__main__":
         loop = asyncio.get_event_loop()
         loop.run_until_complete(main())
 
+
+#By: Gustavo Quitto
