@@ -42,7 +42,8 @@ async def Config_Main():
     tool.menu(data_Local)
     print("1. Ativar Dev Mode")
     print("2. Mudar Nome Do App")
-    print("3. Voltar")
+    print("3. App Info")
+    print("4. Voltar")
     c = input("Digite sua resposta: ").lower().strip()
 
     if c == "1":
@@ -66,12 +67,31 @@ async def Config_Main():
         await Config_Main()
         return
     elif c == "3":
+        tool.clear_screen() 
+        Show_PID_Info(data_local=data_Local,PID=data_Local.alert_pid)
+        return
+    elif c == "4":
         await asyncio.create_task(Start())
         return
     else:
         await Config_Main()
         return
 
+def Show_PID_Info(data_local:data, PID:int):
+    tool.menu(data_local)
+    print(f"🚀  **App**: {data_local.name} \n")
+    print(f"🖥️  **Sistema Operacional**: {data_local.OS_client}  \n ")
+    print(f"⚙️  **PID do processo alert.py**: {PID} \n")
+    print(f"📅  **Data**: {data_local.day}/{data_local.mes}/{data_local.ano} \n ")
+    print(f"⏳  **Status**: {'Ativo' if tool.is_alert_running() else 'Inativo'} \n")
+    print(f"🔑  **Licença**: MIT \n")
+    print(f"👨‍💻  **Criador**: Quitto \n")
+    print(f"🛠️  **Version**: {data_local.version}")
+
+    c = input("Digite qualquer coisa para voltar: ")
+    tool.clear_screen()
+    asyncio.create_task(Start())
+    return
 
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():

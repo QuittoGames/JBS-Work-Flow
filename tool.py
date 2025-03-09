@@ -22,7 +22,7 @@ class tool:
         if data.modules == None:return
         try:
             for i in data.modules:
-                subprocess.run("pip3","install",i)
+                os.system(f"pip3 install {i}")
             return
         except Exception as E:
             print(f"Erro Na Verificaçao De Modulos, Erro: {E}")
@@ -30,15 +30,15 @@ class tool:
         
     def Notification(name,descri):
         try:
-            if not os.path.exists(r"C:\Users\Admin\Downloads\Projects\JBS Work Flow\icons\icon.png"):
-                print(f"Ícone encontrado: {os.path.exists(r'C:\Users\Admin\Downloads\Projects\JBS Work Flow\icons\icon.png')}")
+            if not os.path.exists(r"C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png"):
+                print(f"Ícone encontrado: {os.path.exists(r'C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png')}")
                 return None
 
             notification = winotify.Notification(
                 app_id="Germinare TECH",
                 title=name,
                 msg=descri,
-                icon=r"C:\Users\Admin\Downloads\Projects\JBS Work Flow\icons\icon.png"
+                icon=r"C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png"
             )
             notification.set_audio(winotify.audio.Default, loop=False)
             notification.add_actions(
@@ -75,14 +75,14 @@ class tool:
         print(f"resposta do server: {reponse}")
         sleep(5)
         return
-    
+     
     def start_alert_process(data_Local:data):
         try:
             alert_sub = subprocess.Popen(["python", "alert.py"], creationflags=subprocess.CREATE_NO_WINDOW)
             if data_Local.Debug: 
                 print("🚀 alert.py iniciado!") # Este print foi colocando somente para use dev trocando no score code 
                 data_Local.alert_pid = alert_sub.pid # Armazena o PID
-                print(f"Subprosses Info: {subprocess.PIPE}")
+                print(f"Subprosses Info: {subprocess.PIPE} \n PID: {alert_sub.pid}")
 
 
         except Exception as E:
@@ -152,10 +152,11 @@ class tool:
         print("_"*30 + data_Local.name + "_"*30)
         print(f"{data.day}/{data.mes}/{data.ano}")
         print(f"Sistema Operacional: {data.OS_client}")
+        if data_Local.Debug:print("🖥️"+"  "+ f"alert.py: PID: {data_Local.alert_pid}")
         if data_Local.Debug:print("🔧 Dev Mode")
         print("_"*73)
         return
-    
+
     def change_app_name(data_local:data):
         try:
             tool.clear_screen()
