@@ -3,6 +3,7 @@ from data import data
 from datetime import datetime
 from tool import tool
 import asyncio
+import subprocess
 
 #Iniliza A Classe data
 data_Local = data()
@@ -30,6 +31,7 @@ async def Start():
         await Config_Main()
         return
     elif c == "3":
+        tool.exit_progarm(PID=data_Local.alert_pid) #Fecha por PID do agente.py
         tool.clear_screen()
         return
     else:
@@ -75,7 +77,9 @@ async def Config_Main():
 async def main():
     tool.verify_modules()
     tool.format_dates(data_Local)
-    asyncio.create_task(tool.alert_to_to_assess_classroom(data_local=data_Local))
+    if not tool.is_alert_running():  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
+        tool.start_alert_process(data_Local)
+        if data_Local.Debug: print(f"🚀 alert.py iniciado! iniciado com PID: {data_Local.alert_pid}")  # Print para debug
     await asyncio.create_task(Start())
 
 if __name__ == "__main__":

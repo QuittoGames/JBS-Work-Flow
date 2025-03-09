@@ -76,33 +76,62 @@ class tool:
         sleep(5)
         return
     
-    @staticmethod
-    async def alert_to_to_assess_classroom(data_local:data):
+    def start_alert_process(data_Local:data):
         try:
-            while True:
-                hour = datetime.now().strftime("%H")
-                minutes = datetime.now().strftime("%M")
-                if data_local.Debug:
-                    print(f"Hour: {hour}, Min: {minutes}")
-                    print(f"Debug - Data armazenada: {data_local.date}")
-                    print(f"Debug - Comparando com: {(hour, minutes)}")
+            alert_sub = subprocess.Popen(["python", "alert.py"], creationflags=subprocess.CREATE_NO_WINDOW)
+            if data_Local.Debug: 
+                print("🚀 alert.py iniciado!") # Este print foi colocando somente para use dev trocando no score code 
+                data_Local.alert_pid = alert_sub.pid # Armazena o PID
+                print(f"Subprosses Info: {subprocess.PIPE}")
 
-                try:
-                    if (int(hour),int(minutes)) in data_local.date:
-                        if data_local.Debug:print("🔔 Notificaçao!")
-                        tool.Notification(name="Avalie A Aula !!!",descri="Avalie A Aula !!!")
-                except Exception as E:
-                    print(f"Erro Al Verificar Horario: {E}")
-                    print(f"Hour: {hour}, Min: {minutes}")
-                    print(f"Debug + Data armazenada: {data_local.date}")
-                    print(f"Debug + Comparando com: {(hour, minutes)}")
-                    break
-                if (hour) not in data.date:return
 
-                await asyncio.sleep(1)
+        except Exception as E:
+            print(f"Erro Al Inicar Subporsses , Erro: {E}\n")
+            print(f"Subprosses Info: {subprocess.PIPE}")
+            sleep(5)
+            return
+        
+    def is_alert_running():
+        if data.OS_client == "Windows":
+            process = subprocess.run(
+                ["tasklist", "/FI", "IMAGENAME eq python.exe"], capture_output=True, text=True
+            )
+            return 'alert.py' in process.stdout
+        else:
+            # Em sistemas Unix, usa-se o pgrep
+            return subprocess.call(['pgrep', '-f', 'alert.py']) == 0
+
+    
+    @staticmethod
+    def alert_to_to_assess_classroom(data_local:data):
+        try:
+            # while True:
+            hour = datetime.now().strftime("%H")
+            minutes = datetime.now().strftime("%M")
+
+            #if (int(hour), int(minutes)) not in data.date or not (7 <= int(hour) <= 14):return
+
+            if data_local.Debug:
+                print(f"Hour: {hour}, Min: {minutes}")
+                print(f"Debug + Data armazenada: {data_local.date}")
+                print(f"Debug + Comparando com: {(hour, minutes)}")
+
+            try:
+                if (int(hour),int(minutes)) in data_local.date:
+                    if data_local.Debug:print("🔔 Notificaçao!")
+                    tool.Notification(name="Avalie A Aula !!!",descri="Avalie A Aula !!!")
+            except Exception as E:
+                print(f"Erro Al Verificar Horario: {E}")
+
+            if data_local.Debug:
+                print(f"Hour: {hour}, Min: {minutes}")
+                print(f"Debug + Data armazenada: {data_local.date}")
+                print(f"Debug + Comparando com: {(hour, minutes)}")
         except Exception as E:
             print(f"Erro Al Inicar Loop De Verificaçao, Eroo: {E}")
             return
+    
+    exit_progarm = lambda PID: os.kill(PID,9) 
         
     def format_dates(data_local:data):
         formatted_date = []
