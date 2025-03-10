@@ -79,9 +79,9 @@ class tool:
     def start_alert_process(data_Local:data):
         try:
             alert_sub = subprocess.Popen(["python", "alert.py"], creationflags=subprocess.CREATE_NO_WINDOW)
+            data_Local.alert_pid = alert_sub.pid # Armazena o PID
             if data_Local.Debug: 
                 print("🚀 alert.py iniciado!") # Este print foi colocando somente para use dev trocando no score code 
-                data_Local.alert_pid = alert_sub.pid # Armazena o PID
                 print(f"Subprosses Info: {subprocess.PIPE} \n PID: {alert_sub.pid}")
 
 
