@@ -4,6 +4,8 @@ from datetime import datetime
 from tool import tool
 import asyncio
 import subprocess
+import os
+import sys
 
 #Iniliza A Classe data
 data_Local = data()
@@ -16,6 +18,7 @@ async def Start():
     tool.menu(data_Local)
     print("1. Assesar Odette")
     print("2. Config")
+    if data.Debug: print("Tasks")
     print("3. Exit")
     c = input("Digite Sua Resosta: ").lower().strip()
 
@@ -30,6 +33,16 @@ async def Start():
         tool.clear_screen() 
         await Config_Main()
         return
+    elif c == "4":
+        try:
+            sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "ToDo")))
+            from ToDo.to_do_main import To_Do_Main
+            #Inicar Module Do To_Do
+            To_Do_Main(data_Local=data_Local)
+            await Start()
+            return
+        except Exception as E:
+            print(f"Erro Al Iniciar To_Do Tasks Module, Erro: {E}")
     elif c == "3":
         if data_Local.alert_pid is None or not isinstance(data_Local.alert_pid, int):
             print(f"Erro: PID inválido ({data_Local.alert_pid})")

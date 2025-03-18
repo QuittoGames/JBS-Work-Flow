@@ -27,8 +27,9 @@ class tool:
         except Exception as E:
             print(f"Erro Na Verificaçao De Modulos, Erro: {E}")
             return
-        
-    def Notification(name,descri):
+    
+    @staticmethod
+    def Notification(name:str,descri:str):
         try:
             if not os.path.exists(r"C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png"):
                 print(f"Ícone encontrado: {os.path.exists(r'C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png')}")
