@@ -76,3 +76,11 @@ Para começar, clone o repositório no seu computador:
   git clone https://github.com/QuittoGames/JBS-Work-Flow
   cd JBS-Work-Flow
   python index.py
+
+# 🚨 Aviso Legal  
+
+**Este aplicativo não possui nenhuma relação oficial com o Grupo JBS.**  
+A menção ao nome foi apenas ilustrativa, pois a aplicação foi desenvolvida com o objetivo de promover os estudos dos alunos do **Germinare Tech**.  
+
+O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se tornar um projeto independente, pertencente exclusivamente ao seu criador.  
+
