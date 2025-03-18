@@ -18,8 +18,8 @@ async def Start():
     tool.menu(data_Local)
     print("1. Assesar Odette")
     print("2. Config")
-    if data_Local.Debug: print("4. Tasks")
-    print("3. Exit")
+    print("3. Tasks")
+    print("4. Exit")
     c = input("Digite Sua Resosta: ").lower().strip()
 
     if c == "1":
@@ -33,7 +33,7 @@ async def Start():
         tool.clear_screen() 
         await Config_Main()
         return
-    elif c == "4":
+    elif c == "3":
         try:
             #Inicar Module Do To_Do
             sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "ToDo")))
@@ -43,7 +43,7 @@ async def Start():
             return
         except Exception as E:
             print(f"Erro Al Iniciar To_Do Tasks Module, Erro: {E}")
-    elif c == "3":
+    elif c == "4":
         if data_Local.alert_pid is None or not isinstance(data_Local.alert_pid, int):
             print(f"Erro: PID inválido ({data_Local.alert_pid})")
         else:
