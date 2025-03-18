@@ -1,7 +1,7 @@
 # JBS Work Flow
 
 
-# Notas da Nova Versão - Módulo "To Do" 3.0v Beta
+# Notas da Nova Versão - Módulo "To Do" 3.0v 
 
 - O módulo **To Do** está em fase **Beta** e faz parte do sistema **JBS Work Flow**.
 - **Modo de Desenvolvimento (Debug)** precisa estar ativado para acessar e interagir com o módulo.
