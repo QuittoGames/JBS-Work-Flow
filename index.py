@@ -31,7 +31,10 @@ async def Start():
         await Config_Main()
         return
     elif c == "3":
-        tool.exit_progarm(PID=data_Local.alert_pid) #Fecha por PID do agente.py
+        if data_Local.alert_pid is None or not isinstance(data_Local.alert_pid, int):
+            print(f"Erro: PID inválido ({data_Local.alert_pid})")
+        else:
+            tool.exit_progarm(PID=data_Local.alert_pid) #Fecha por PID do agente.py
         tool.clear_screen()
         return
     else:
@@ -79,13 +82,13 @@ async def Config_Main():
 
 def Show_PID_Info(data_local:data, PID:int):
     tool.menu(data_local)
-    print(f"🚀  **App**: {data_local.name} \n")
-    print(f"🖥️  **Sistema Operacional**: {data_local.OS_client}  \n ")
-    print(f"⚙️  **PID do processo alert.py**: {PID} \n")
-    print(f"📅  **Data**: {data_local.day}/{data_local.mes}/{data_local.ano} \n ")
-    print(f"⏳  **Status**: {'Ativo' if tool.is_alert_running() else 'Inativo'} \n")
-    print(f"🔑  **Licença**: MIT \n")
-    print(f"👨‍💻  **Criador**: Quitto \n")
+    print(f"🚀  **App**: {data_local.name}")
+    print(f"🖥️  **Sistema Operacional**: {data_local.OS_client}")
+    print(f"⚙️  **PID do processo alert.py**: {PID}")
+    print(f"📅  **Data**: {data_local.day}/{data_local.mes}/{data_local.ano}")
+    print(f"⏳  **Status**: {'Ativo' if PID != 0 else 'Inativo'}")
+    print(f"🔑  **Licença**: MIT")
+    print(f"👨‍💻  **Criador**: Quitto")
     print(f"🛠️  **Version**: {data_local.version}")
 
     c = input("Digite qualquer coisa para voltar: ")
@@ -97,7 +100,7 @@ def Show_PID_Info(data_local:data, PID:int):
 async def main():
     tool.verify_modules()
     tool.format_dates(data_Local)
-    if not tool.is_alert_running():  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
+    if not tool.is_alert_running(PID = data_Local.alert_pid):  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
         tool.start_alert_process(data_Local)
         if data_Local.Debug: print(f"🚀 alert.py iniciado! iniciado com PID: {data_Local.alert_pid}")  # Print para debug
     await asyncio.create_task(Start())

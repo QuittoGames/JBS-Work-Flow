@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile>
+  <diagram id="fluxo_codigo" name="Fluxo do Código">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Bloco Inicial -->
+        <mxCell id="start" value="Início (main)" style="ellipse;fillColor=#D9EAD3" vertex="1" parent="1">
+          <mxGeometry x="300" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Configuração Inicial -->
+        <mxCell id="verificar_modulos" value="tool.verify_modules()" style="rounded=1;fillColor=#FFF2CC" vertex="1" parent="1">
+          <mxGeometry x="250" y="120" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="formatar_datas" value="tool.format_dates()" style="rounded=1;fillColor=#FFF2CC" vertex="1" parent="1">
+          <mxGeometry x="250" y="190" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Verificação de alerta -->
+        <mxCell id="verificar_alerta" value="tool.is_alert_running(PID) ?" style="rhombus;fillColor=#D9EAD3" vertex="1" parent="1">
+          <mxGeometry x="250" y="260" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="iniciar_alerta" value="tool.start_alert_process()" style="rounded=1;fillColor=#FFF2CC" vertex="1" parent="1">
+          <mxGeometry x="250" y="330" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Menu Principal -->
+        <mxCell id="menu" value="tool.menu()" style="rounded=1;fillColor=#A4C2F4" vertex="1" parent="1">
+          <mxGeometry x="250" y="400" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="escolha" value="Escolha do usuário" style="rhombus;fillColor=#D9EAD3" vertex="1" parent="1">
+          <mxGeometry x="250" y="470" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Opções do Menu -->
+        <mxCell id="acessar_odette" value="Abrir Odette" style="rounded=1;fillColor=#A4C2F4" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="abrir_config" value="Abrir Configuração" style="rounded=1;fillColor=#A4C2F4" vertex="1" parent="1">
+          <mxGeometry x="250" y="550" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sair" value="Sair" style="rounded=1;fillColor=#A4C2F4" vertex="1" parent="1">
+          <mxGeometry x="450" y="550" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Conexões -->
+        <mxCell id="start_to_verificar_modulos" edge="1" source="start" target="verificar_modulos" parent="1" />
+        <mxCell id="verificar_modulos_to_formatar_datas" edge="1" source="verificar_modulos" target="formatar_datas" parent="1" />
+        <mxCell id="formatar_datas_to_verificar_alerta" edge="1" source="formatar_datas" target="verificar_alerta" parent="1" />
+        <mxCell id="verificar_alerta_to_iniciar_alerta" edge="1" source="verificar_alerta" target="iniciar_alerta" parent="1" />
+        <mxCell id="verificar_alerta_to_menu" edge="1" source="verificar_alerta" target="menu" parent="1" />
+        <mxCell id="iniciar_alerta_to_menu" edge="1" source="iniciar_alerta" target="menu" parent="1" />
+        <mxCell id="menu_to_escolha" edge="1" source="menu" target="escolha" parent="1" />
+        <mxCell id="escolha_to_acessar_odette" edge="1" source="escolha" target="acessar_odette" parent="1" />
+        <mxCell id="escolha_to_abrir_config" edge="1" source="escolha" target="abrir_config" parent="1" />
+        <mxCell id="escolha_to_sair" edge="1" source="escolha" target="sair" parent="1" />
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

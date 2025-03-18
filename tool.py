@@ -91,10 +91,11 @@ class tool:
             sleep(5)
             return
         
-    def is_alert_running():
-        if data.OS_client == "Windows":
+    def is_alert_running(PID:int):
+        if data.OS_client == "Windows": 
             process = subprocess.run(
-                ["tasklist", "/FI", "IMAGENAME eq python.exe"], capture_output=True, text=True
+                ["powershell", "-Command", f"Get-Process -Id {PID}"],
+                capture_output=True, text=True
             )
             return 'alert.py' in process.stdout
         else:
