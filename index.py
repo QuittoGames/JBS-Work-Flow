@@ -83,13 +83,13 @@ async def Config_Main():
 def Show_PID_Info(data_local:data, PID:int):
     tool.menu(data_local)
     print(f"🚀  **App**: {data_local.name}")
+    print(f"🛠️  **Version**: {data_local.version}")
     print(f"🖥️  **Sistema Operacional**: {data_local.OS_client}")
     print(f"⚙️  **PID do processo alert.py**: {PID}")
     print(f"📅  **Data**: {data_local.day}/{data_local.mes}/{data_local.ano}")
     print(f"⏳  **Status**: {'Ativo' if PID != 0 else 'Inativo'}")
     print(f"🔑  **Licença**: MIT")
     print(f"👨‍💻  **Criador**: Quitto")
-    print(f"🛠️  **Version**: {data_local.version}")
 
     c = input("Digite qualquer coisa para voltar: ")
     tool.clear_screen()
