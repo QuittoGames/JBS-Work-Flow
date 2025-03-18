@@ -18,7 +18,7 @@ async def Start():
     tool.menu(data_Local)
     print("1. Assesar Odette")
     print("2. Config")
-    if data.Debug: print("Tasks")
+    if data_Local.Debug: print("4. Tasks")
     print("3. Exit")
     c = input("Digite Sua Resosta: ").lower().strip()
 
@@ -35,9 +35,9 @@ async def Start():
         return
     elif c == "4":
         try:
+            #Inicar Module Do To_Do
             sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "ToDo")))
             from ToDo.to_do_main import To_Do_Main
-            #Inicar Module Do To_Do
             To_Do_Main(data_Local=data_Local)
             await Start()
             return
