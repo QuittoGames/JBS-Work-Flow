@@ -1,5 +1,18 @@
 # JBS Work Flow
 
+
+# Notas da Nova Versão - Módulo "To Do" 3.0v Beta
+
+- O módulo **To Do** está em fase **Beta** e faz parte do sistema **JBS Work Flow**.
+- **Modo de Desenvolvimento (Debug)** precisa estar ativado para acessar e interagir com o módulo.
+- A versão **3.0v Beta** pode apresentar comportamentos inesperados.
+- O **To Do** permite o gerenciamento de tarefas com funcionalidades de:
+  - Adicionar, remover e visualizar tarefas.
+  - Configuração de notificações baseadas em tempo.
+- O sistema envia **notificações automáticas** para tarefas em horários específicos.
+- O módulo é **interativo** com um menu para gerenciar tarefas e configurações do aplicativo.
+
+
 ## Visão Geral
 
 O **JBS Work Flow** é um acelerador de fluxo de trabalho desenvolvido para facilitar as atividades na escola, principalmente através de notificações que lembram os usuários de avaliar as aulas em horários pré-definidos. O sistema utiliza tarefas assíncronas para gerenciar o menu interativo e um processo em segundo plano para monitorar o horário e disparar notificações automaticamente.
