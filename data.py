@@ -8,7 +8,6 @@ class data:
     Debug = False
     name = "JBS Work Flow"
     Odette_URL = "https://alunos.igerminare.org.br/"
-    version: str = "2.0.2v"
     ano = datetime.now().year
     mes = datetime.now().month
     day = datetime.now().day

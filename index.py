@@ -7,9 +7,10 @@ import subprocess
 import os
 import sys
 
+
 #Iniliza A Classe data
 data_Local = data()
-
+ 
 #LINCEÇA MIT
 #By: Gustavo Quitto
 
@@ -17,8 +18,9 @@ data_Local = data()
 async def Start():
     tool.menu(data_Local)
     print("1. Assesar Odette")
-    print("2. Config")
-    print("3. Tasks")
+    print("2. Tasks")
+    print("3. Config")
+    if data_Local.Debug:print("5. IA Local")
     print("4. Exit")
     c = input("Digite Sua Resosta: ").lower().strip()
 
@@ -30,10 +32,6 @@ async def Start():
         await asyncio.create_task(Start())
         return
     elif c == "2":
-        tool.clear_screen() 
-        await Config_Main()
-        return
-    elif c == "3":
         try:
             #Inicar Module Do To_Do
             sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "ToDo")))
@@ -43,6 +41,10 @@ async def Start():
             return
         except Exception as E:
             print(f"Erro Al Iniciar To_Do Tasks Module, Erro: {E}")
+    elif c == "3":
+        tool.clear_screen() 
+        await Config_Main()
+        return
     elif c == "4":
         if data_Local.alert_pid is None or not isinstance(data_Local.alert_pid, int):
             print(f"Erro: PID inválido ({data_Local.alert_pid})")
@@ -50,6 +52,13 @@ async def Start():
             tool.exit_progarm(PID=data_Local.alert_pid) #Fecha por PID do agente.py
         tool.clear_screen()
         return
+    elif c == "5" and data_Local.Debug:
+        sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "IA_Ollama")))
+        from IA_Ollama.index_IA import Start_IA
+        Start_IA(data_global=data_Local)
+        await Start()
+        return
+
     else:
         await asyncio.create_task(Start())
         return
