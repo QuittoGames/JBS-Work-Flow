@@ -7,7 +7,6 @@ import subprocess
 import os
 import sys
 
-
 #Iniliza A Classe data
 data_Local = data()
  
