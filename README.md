@@ -1,11 +1,10 @@
 # JBS Work Flow
 
 
-# Notas da Nova Versão - Módulo "To Do" 3.0v Beta
+# Notas da Nova Versão - Módulo "To Do" 3.0v 
 
 - O módulo **To Do** está em fase **Beta** e faz parte do sistema **JBS Work Flow**.
-- **Modo de Desenvolvimento (Debug)** precisa estar ativado para acessar e interagir com o módulo.
-- A versão **3.0v Beta** pode apresentar comportamentos inesperados.
+- A versão **3.0v ** pode apresentar comportamentos inesperados.
 - O **To Do** permite o gerenciamento de tarefas com funcionalidades de:
   - Adicionar, remover e visualizar tarefas.
   - Configuração de notificações baseadas em tempo.
@@ -77,3 +76,11 @@ Para começar, clone o repositório no seu computador:
   git clone https://github.com/QuittoGames/JBS-Work-Flow
   cd JBS-Work-Flow
   python index.py
+
+# 🚨 Aviso Legal  
+
+**Este aplicativo não possui nenhuma relação oficial com o Grupo JBS.**  
+A menção ao nome foi apenas ilustrativa, pois a aplicação foi desenvolvida com o objetivo de promover os estudos dos alunos do **Germinare Tech**.  
+
+O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se tornar um projeto independente, pertencente exclusivamente ao seu criador.  
+
