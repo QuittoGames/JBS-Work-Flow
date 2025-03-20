@@ -54,7 +54,7 @@ async def Start():
     elif c == "5" and data_Local.Debug:
         sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "IA_Ollama")))
         from IA_Ollama.index_IA import Start_IA
-        Start_IA(data_global=data_Local)
+        main(data_global=data_Local)
         await Start()
         return
 
