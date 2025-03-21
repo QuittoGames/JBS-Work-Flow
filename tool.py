@@ -31,15 +31,18 @@ class tool:
     @staticmethod
     def Notification(name:str,descri:str):
         try:
-            if not os.path.exists(r"C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png"):
-                print(f"Ícone encontrado: {os.path.exists(r'C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png')}")
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            icon_path = os.path.join(current_dir, 'icons', 'icon.png')
+            
+            if not os.path.exists(icon_path):
+                print(f"Ícone encontrado: {os.path.exists(icon_path)}")
                 return None
 
             notification = winotify.Notification(
                 app_id="Germinare TECH",
                 title=name,
                 msg=descri,
-                icon=r"C:\Users\gustavoquitto-ieg\Downloads\scripts\JBS-Work-Flow\icons\icon.png"
+                icon=icon_path
             )
             notification.set_audio(winotify.audio.Default, loop=False)
             notification.add_actions(
@@ -107,7 +110,6 @@ class tool:
     @staticmethod
     def alert_to_to_assess_classroom(data_local:data):
         try:
-            # while True:
             hour = datetime.now().strftime("%H")
             minutes = datetime.now().strftime("%M")
 
