@@ -1,16 +1,16 @@
 # JBS Work Flow
 
 
-# Notas da Nova Versão - Módulo "To Do" 3.0v 
+# Notas da Nova Versão - Módulo "To Do" 3.1v 
 
-- O módulo **To Do** está em fase **Beta** e faz parte do sistema **JBS Work Flow**.
-- A versão **3.0v ** pode apresentar comportamentos inesperados.
+- O módulo **To Do** foi implemetado no **JBS Work Flow**.
+- A versão **3.1v ** pode apresentar comportamentos inesperados.
 - O **To Do** permite o gerenciamento de tarefas com funcionalidades de:
   - Adicionar, remover e visualizar tarefas.
   - Configuração de notificações baseadas em tempo.
 - O sistema envia **notificações automáticas** para tarefas em horários específicos.
 - O módulo é **interativo** com um menu para gerenciar tarefas e configurações do aplicativo.
-
+- O Modulo De IA Foi colocado e ultiliza dos serviços do [Ollama](https://ollama.com/) e esta em fases de testes porem pode ser assesado com o modo Dev disponivel na aba de Configuraçoes
 
 ## Visão Geral
 
@@ -79,14 +79,6 @@ Para começar, clone o repositório no seu computador:
   exit
 ````
 
-# 🚨 Aviso Legal  
-
-**Este aplicativo não possui nenhuma relação oficial com o Grupo JBS.**  
-A menção ao nome foi apenas ilustrativa, pois a aplicação foi desenvolvida com o objetivo de promover os estudos dos alunos do **Germinare Tech**.  
-
-O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se tornar um projeto independente, pertencente exclusivamente ao seu criador.  
-
-
 ## Sistema de Versão
 
 O **JBS Work Flow** utiliza um sistema de versão para organizar e identificar as diferentes atualizações e estágios de desenvolvimento do projeto. A estrutura de versão segue o formato:
@@ -108,6 +100,14 @@ O **JBS Work Flow** utiliza um sistema de versão para organizar e identificar a
 - **K2025_03_H1_30_test**: Versão de teste do primeiro semestre de 2025, lançada em março.
 
 Este sistema de versões permite identificar claramente em qual semestre a versão foi lançada, seu tipo (estável, em desenvolvimento ou em teste) e a data de lançamento.
+
+
+# 🚨 Aviso Legal  
+
+**Este aplicativo não possui nenhuma relação oficial com o Grupo JBS.**  
+A menção ao nome foi apenas ilustrativa, pois a aplicação foi desenvolvida com o objetivo de promover os estudos dos alunos do **Germinare Tech**.  
+
+O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se tornar um projeto independente, pertencente exclusivamente ao seu criador.  
 
 
 
