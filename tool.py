@@ -174,14 +174,15 @@ class tool:
             sleep(5)
             return
     
-    def start_web(url):
+    def start_web(url:str,data_local:data):
         try:
-            if data.Debug:
+            if data_local.Debug:
                 try:
-                    print("requet URL: "+ get(url=url))
+                    print("requet URL: "+ str(get(url=url)))
                     print(f"URL: {url}")
                 except Exception as E:
                     print("Erro Na Requisao HTTPS Da URL!")
+                    print(f"Erro: {E}")
 
             subprocess.run(["cmd", "/c", "start", url], shell=True)
             return

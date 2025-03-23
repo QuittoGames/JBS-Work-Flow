@@ -14,17 +14,21 @@ class tool_IA:
         #Trecho Retirado Do Dev Flow 2.0
         try:
             if data_global.OS_client == "Windows":
+                tool.clear_screen()
                 print("Para Execuçao Da Feture IA Local E Ultilizado ferramentas de terceros neste caso sendo a ferramenta 'ollama' mais informaçoes no site 'https://ollama.com/'")
                 print("Caso Ja Possua A Ferramete Apenas Presisone Qualquer Tecla")
                 license_run = input("Deseja Continuar: (y/n)")
                 if license_run.lower().strip() == "n":return
                 os.system("winget install ollama")
+                return
             else:
+                tool.clear_screen()
                 print("Para Execuçao Da Feture IA Local E Ultilizado ferramentas de terceros neste caso sendo a ferramenta 'ollama' mais informaçoes no site 'https://ollama.com/'")
                 print("Caso Ja Possua A Ferramete Apenas Presisone Qualquer Tecla")
                 license_run = input("Deseja Continuar: (y/n)")
                 if license_run.lower().strip() == "n":return
                 os.system("sudo apt install ollama")
+                return
         except Exception as E:
             print(f"Erro Na Innstalaçao Do ollama!, Erro: {E}")
 

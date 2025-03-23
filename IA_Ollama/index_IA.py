@@ -52,7 +52,7 @@ def Config_IA(data_global:data):
         return
     
 def main(data_global:data):
-    tool_IA.install_ollama(data_local)
+    tool_IA.install_ollama(data_global)
     Start_IA(data_global=data_global)
     return
 

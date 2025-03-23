@@ -25,7 +25,7 @@ async def Start():
 
     if c == "1":
         tool.clear_screen()
-        tool.start_web(data_Local.Odette_URL)
+        tool.start_web(data_Local.Odette_URL,data_local=data_Local)
         print(f"Iniciando: {data_Local.Odette_URL}")
         await asyncio.sleep(5)
         await asyncio.create_task(Start())
@@ -53,7 +53,7 @@ async def Start():
         return
     elif c == "5" and data_Local.Debug:
         sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "IA_Ollama")))
-        from IA_Ollama.index_IA import Start_IA
+        from IA_Ollama.index_IA import main
         main(data_global=data_Local)
         await Start()
         return
@@ -105,6 +105,7 @@ def Show_PID_Info(data_local:data, PID:int):
     tool.menu(data_local)
     print(f"🚀  **App**: {data_local.name}")
     print(f"🛠️  **Version**: {data_local.version}")
+    if data_Local.Debug:print(f"🛠️  **Regiter Version**: {data_local.version_id_register}")
     print(f"🖥️  **Sistema Operacional**: {data_local.OS_client}")
     print(f"⚙️  **PID do processo alert.py**: {PID}")
     print(f"📅  **Data**: {data_local.day}/{data_local.mes}/{data_local.ano}")
@@ -119,7 +120,7 @@ def Show_PID_Info(data_local:data, PID:int):
 
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():
-    tool.verify_modules()
+    if not data_Local.Debug:tool.verify_modules()
     tool.format_dates(data_Local)
     if not tool.is_alert_running(PID = data_Local.alert_pid):  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
         tool.start_alert_process(data_Local)
