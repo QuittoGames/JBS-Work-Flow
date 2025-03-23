@@ -76,6 +76,8 @@ Para começar, clone o repositório no seu computador:
   git clone https://github.com/QuittoGames/JBS-Work-Flow
   cd JBS-Work-Flow
   python index.py
+  exit
+````
 
 # 🚨 Aviso Legal  
 
@@ -83,4 +85,29 @@ Para começar, clone o repositório no seu computador:
 A menção ao nome foi apenas ilustrativa, pois a aplicação foi desenvolvida com o objetivo de promover os estudos dos alunos do **Germinare Tech**.  
 
 O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se tornar um projeto independente, pertencente exclusivamente ao seu criador.  
+
+
+## Sistema de Versão
+
+O **JBS Work Flow** utiliza um sistema de versão para organizar e identificar as diferentes atualizações e estágios de desenvolvimento do projeto. A estrutura de versão segue o formato:
+**K{ANO}_{MES}_H{SEMESTRE}_TypeVersion**
+
+
+### Explicação dos Componentes:
+- **K**: Prefixo de identificação do projeto.
+- **{ANO}_{MES}**: Representa o **ano** e **mês** em que a versão foi lançada.
+- **H{SEMESTRE}**: Indica o semestre do ano. Por exemplo, `H1` para o primeiro semestre e `H2` para o segundo semestre.
+- **TypeVersion**: Tipo de versão, que pode ser:
+  - **10** = `release` (versão estável com grandes mudanças).
+  - **20** = `dev` (versão de desenvolvimento, com novas funcionalidades e experimentações).
+  - **30** = `test` (versão de teste, com correções e ajustes).
+
+### Exemplo:
+- **K2025_03_H1_10_release**: Versão final (release) do primeiro semestre de 2025, lançada em março.
+- **K2025_03_H2_20_dev**: Versão de desenvolvimento do segundo semestre de 2025, lançada em março.
+- **K2025_03_H1_30_test**: Versão de teste do primeiro semestre de 2025, lançada em março.
+
+Este sistema de versões permite identificar claramente em qual semestre a versão foi lançada, seu tipo (estável, em desenvolvimento ou em teste) e a data de lançamento.
+
+
 
