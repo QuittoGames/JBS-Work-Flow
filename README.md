@@ -1,7 +1,7 @@
 # JBS Work Flow
 
 
-# Notas da Nova Versão - Módulo "To Do" 3.1v 
+# Notas da Nova Versão - Implemetaçao De Serviços (Modulos) 3.1v 
 
 - O módulo **To Do** foi implemetado no **JBS Work Flow**.
 - A versão **3.1v ** pode apresentar comportamentos inesperados.
