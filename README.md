@@ -1,16 +1,16 @@
 # JBS Work Flow
 
 
-# Notas da Nova Versão - Módulo "To Do" 3.0v 
+# Notas da Nova Versão - Implemetaçao De Serviços (Modulos) 3.1v 
 
-- O módulo **To Do** está em fase **Beta** e faz parte do sistema **JBS Work Flow**.
-- A versão **3.0v ** pode apresentar comportamentos inesperados.
+- O módulo **To Do** foi implemetado no **JBS Work Flow**.
+- A versão **3.1v ** pode apresentar comportamentos inesperados.
 - O **To Do** permite o gerenciamento de tarefas com funcionalidades de:
   - Adicionar, remover e visualizar tarefas.
   - Configuração de notificações baseadas em tempo.
 - O sistema envia **notificações automáticas** para tarefas em horários específicos.
 - O módulo é **interativo** com um menu para gerenciar tarefas e configurações do aplicativo.
-
+- O Modulo De IA Foi colocado e ultiliza dos serviços do [Ollama](https://ollama.com/) e esta em fases de testes porem pode ser assesado com o modo Dev disponivel na aba de Configuraçoes
 
 ## Visão Geral
 
@@ -76,6 +76,31 @@ Para começar, clone o repositório no seu computador:
   git clone https://github.com/QuittoGames/JBS-Work-Flow
   cd JBS-Work-Flow
   python index.py
+  exit
+````
+
+## Sistema de Versão
+
+O **JBS Work Flow** utiliza um sistema de versão para organizar e identificar as diferentes atualizações e estágios de desenvolvimento do projeto. A estrutura de versão segue o formato:
+**K{ANO}_{MES}_H{SEMESTRE}_TypeVersion**
+
+
+### Explicação dos Componentes:
+- **K**: Prefixo de identificação do projeto.
+- **{ANO}_{MES}**: Representa o **ano** e **mês** em que a versão foi lançada.
+- **H{SEMESTRE}**: Indica o semestre do ano. Por exemplo, `H1` para o primeiro semestre e `H2` para o segundo semestre.
+- **TypeVersion**: Tipo de versão, que pode ser:
+  - **10** = `release` (versão estável com grandes mudanças).
+  - **20** = `dev` (versão de desenvolvimento, com novas funcionalidades e experimentações).
+  - **30** = `test` (versão de teste, com correções e ajustes).
+
+### Exemplo:
+- **K2025_03_H1_10_release**: Versão final (release) do primeiro semestre de 2025, lançada em março.
+- **K2025_03_H2_20_dev**: Versão de desenvolvimento do segundo semestre de 2025, lançada em março.
+- **K2025_03_H1_30_test**: Versão de teste do primeiro semestre de 2025, lançada em março.
+
+Este sistema de versões permite identificar claramente em qual semestre a versão foi lançada, seu tipo (estável, em desenvolvimento ou em teste) e a data de lançamento.
+
 
 # 🚨 Aviso Legal  
 
@@ -83,4 +108,6 @@ Para começar, clone o repositório no seu computador:
 A menção ao nome foi apenas ilustrativa, pois a aplicação foi desenvolvida com o objetivo de promover os estudos dos alunos do **Germinare Tech**.  
 
 O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se tornar um projeto independente, pertencente exclusivamente ao seu criador.  
+
+
 
