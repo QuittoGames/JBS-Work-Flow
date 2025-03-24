@@ -33,7 +33,6 @@ async def Start():
     elif c == "2":
         try:
             #Inicar Module Do To_Do
-            sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "ToDo")))
             from ToDo.to_do_main import To_Do_Main
             To_Do_Main(data_Local=data_Local)
             await Start()
@@ -52,7 +51,6 @@ async def Start():
         tool.clear_screen()
         return
     elif c == "5" and data_Local.Debug:
-        sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "IA_Ollama")))
         from IA_Ollama.index_IA import main
         main(data_global=data_Local)
         await Start()
@@ -121,10 +119,12 @@ def Show_PID_Info(data_local:data, PID:int):
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():
     if not data_Local.Debug:tool.verify_modules()
+    tool.add_path_modules(data_Local)
     tool.format_dates(data_Local)
     if not tool.is_alert_running(PID = data_Local.alert_pid):  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
         tool.start_alert_process(data_Local)
         if data_Local.Debug: print(f"🚀 alert.py iniciado! iniciado com PID: {data_Local.alert_pid}")  # Print para debug
+    if data_Local.Debug: await asyncio.create_task(tool.start_exit_systhen(data_Local))
     await asyncio.create_task(Start())
 
 if __name__ == "__main__":

@@ -5,6 +5,7 @@ import platform
 @dataclass
 class data:
     modules = ["requests","winotify"]
+    modules_local = ["ToDo","IA_Ollama"]
     Debug = False
     name = "JBS Work Flow"
     Odette_URL = "https://alunos.igerminare.org.br/"

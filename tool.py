@@ -2,10 +2,12 @@ import os
 import platform
 from dataclasses import dataclass
 import subprocess
+import sys
 from data import data
 import winotify
 import threading
 import asyncio
+import signal
 from requests import get
 from time import sleep
 from datetime import datetime
@@ -27,6 +29,18 @@ class tool:
         except Exception as E:
             print(f"Erro Na Verificaçao De Modulos, Erro: {E}")
             return
+        
+    def add_path_modules(data_local:data):
+        if data.modules_local == None:return
+        try:
+            for i in data.modules_local:
+                sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), i)))
+                if data_local.Debug:print(f"Module_local: {i}")
+            return
+        except Exception as E:
+            print(f"Erro Al Adicionar Os Caminhos Brutos, Erro: {E}")
+            return
+                            
     
     @staticmethod
     def Notification(name:str,descri:str):
@@ -189,7 +203,13 @@ class tool:
         except Exception as E:
             print(f"Erro Al Inicar Site, Erro: {E}")
             return
-        
+    
+
+    #Dev Function
+    async def start_exit_systhen(data_local:data):
+        signal.signal(signal.SIGINT, lambda signum, frame: tool.exit_progarm(data_local))
+        return
+              
     async def show_clock():
         while True:
             tool.clear_screen()
