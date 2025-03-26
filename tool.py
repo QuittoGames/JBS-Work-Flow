@@ -11,6 +11,7 @@ import signal
 from requests import get
 from time import sleep
 from datetime import datetime
+import subprocess
 
 @dataclass
 class tool:
@@ -23,8 +24,8 @@ class tool:
     def verify_modules():
         if data.modules == None:return
         try:
-            for i in data.modules:
-                os.system(f"pip3 install {i}")
+            req_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "modules", "requirements.txt"))
+            subprocess.run([sys.executable, "-m", "pip", "install", "-r", req_path], check=True)
             return
         except Exception as E:
             print(f"Erro Na Verificaçao De Modulos, Erro: {E}")
