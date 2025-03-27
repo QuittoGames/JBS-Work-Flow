@@ -8,6 +8,7 @@ from tool import tool
 from to_do_class import to_do_class
 from time import sleep
 from winotify import Notification
+from random import randint
 import asyncio
 import threading
 
@@ -22,7 +23,9 @@ class to_do_tool:
         time_notificate = input("Digite O Tempo De Espera Da Notificaçao (M): ")
         time = float(time_notificate)
         time = time * 60.0 
-        task = to_do_class(name_task=name_task,descri_task=descr_task,timer=time,state=False)
+
+        id_task = randint(0,10000)
+        task = to_do_class(name_task=name_task,descri_task=descr_task,timer=time,state=False,id_task=id_task)
         tool.clear_screen()
 
         data.Tasks_to_do.append(task)
@@ -36,13 +39,14 @@ class to_do_tool:
     
     def Remove_Task():
         tool.clear_screen()
-        print(f"Tarefas: {data.Tasks_to_do}")
-        name_task = input("Digite O Nome Da Task: ")
-        task = to_do_tool.Find_Task(name_task=name_task)
+
+        for i in data.Tasks_to_do:print(f"Nome: {i.name_task} | Status: {i.state} | ID: {i.id_task}")
+
+        id_task = input("Digite O ID Da Task: ")
+        task = to_do_tool.Find_Task(id_task)
         if task == None:
             print("Tarefa Nao Pode Ser Encotrada!")
             sleep(2)
-            to_do_tool.Remove_Task()
             return
         
         data.Tasks_to_do.remove(task)
@@ -70,15 +74,35 @@ class to_do_tool:
         tool.clear_screen()
         if len(data.Tasks_to_do) == 0:
             print("Nenhuma tarefa encontrada!")
-        else:
-            for task in data.Tasks_to_do:
-                print(f"Nome: {task.name_task} | Tempo: {task.timer}s | Status: {task.state}")
+        
+        for task in data.Tasks_to_do:
+            print(f"Nome: {task.name_task} | Tempo: {task.timer}s | Status: {task.state} | ID: {task.id_task}")
         input("Pressione Enter para voltar ao menu.")
         return
         
-    def Find_Task(name_task):
-        for i in data.Tasks_to_do:
-            if i.name_task == name_task:
-                return i
-        return None
+    #Implementar Pesquisa Binaria
+    # def Find_Task(name_task):
+    #     for i in data.Tasks_to_do:
+    #         if i.name_task == name_task:
+    #             return i
+    #     return None
+    
+    def Find_Task(id:str):
+        if id.strip().split() == "":return None
+        low_value = 0
+        hight_value = len(data.Tasks_to_do) - 1
+        id = int(id)
 
+        while low_value <= hight_value:
+            med = int((low_value + hight_value) //2)
+            find_value = data.Tasks_to_do[med]
+            task_id = int(find_value.id_task) 
+
+            if task_id == id:
+                return find_value
+            if task_id > id:
+                hight_value = med -1
+            else:
+                low_value = med + 1
+
+        return None

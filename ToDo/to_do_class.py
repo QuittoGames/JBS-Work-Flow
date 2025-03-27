@@ -11,3 +11,4 @@ class to_do_class:
     descri_task:str
     timer : int
     state : bool
+    id_task :int

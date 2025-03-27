@@ -14,7 +14,7 @@ def To_Do_Main(data_Local:data):
     to_do_tool.Show_Menu_Task(data.Tasks_to_do)
     print("1. Add Task")
     print("2. Remove Task")
-    print("3. View Tasks")
+    print("3. View Tasks")  
     print("4. Exit")
     c = input("Digite Sua Resposta: ").strip().lower()
     if c == "1":
