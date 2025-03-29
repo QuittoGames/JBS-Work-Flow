@@ -118,9 +118,10 @@ def Show_PID_Info(data_local:data, PID:int):
 
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():
-    if not data_Local.Debug:tool.verify_modules()
-    tool.add_path_modules(data_Local)
-    tool.format_dates(data_Local)
+    if not data_Local.Debug:asyncio.create_task(tool.verify_modules())
+
+    asyncio.create_task(tool.add_path_modules(data_Local))
+    asyncio.create_task(tool.format_dates(data_Local))
     if not tool.is_alert_running(PID = data_Local.alert_pid):  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
         tool.start_alert_process(data_Local)
         if data_Local.Debug: print(f"🚀 alert.py iniciado! iniciado com PID: {data_Local.alert_pid}")  # Print para debug

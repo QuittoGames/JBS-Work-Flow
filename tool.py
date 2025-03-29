@@ -21,7 +21,7 @@ class tool:
         else:
             os.system('clear')
     
-    def verify_modules():
+    async def verify_modules():
         try:
             #Uso Do modules por txt
             req_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "modules", "requirements.txt"))
@@ -31,7 +31,7 @@ class tool:
             print(f"Erro Na Verificaçao De Modulos, Erro: {E}")
             return
         
-    def add_path_modules(data_local:data):
+    async def add_path_modules(data_local:data):
         if data.modules_local == None:return
         try:
             for i in data.modules_local:
@@ -152,7 +152,7 @@ class tool:
     
     exit_progarm = lambda PID: os.kill(PID,9) 
         
-    def format_dates(data_local:data):
+    async def format_dates(data_local:data):
         formatted_date = []
         for i in data_local.date:
             if isinstance(i, float): #isinstance usado para verificar type
