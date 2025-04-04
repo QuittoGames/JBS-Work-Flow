@@ -58,7 +58,7 @@ class to_do_tool:
     def task_timer(task:to_do_class):
         while task.timer > 0 and not task.state:
             task.timer -= 1.0
-            if data.Debug: print(f"Task {task.name_task}: tempo restante: {task.timer}s")
+            #if data.Debug: print(f"Task {task.name_task}: tempo restante: {task.timer}s")
             sleep(1) 
 
         tool.Notification(name=task.name_task,descri=task.descri_task)
@@ -93,10 +93,17 @@ class to_do_tool:
         hight_value = len(data.Tasks_to_do) - 1
         id = int(id)
 
+        data.Tasks_to_do.sort(key=lambda task: task.id_task) #tarforma por meio de uma lambda todos elementos em int cujo sao IDs
+
         while low_value <= hight_value:
             med = int((low_value + hight_value) //2)
             find_value = data.Tasks_to_do[med]
             task_id = int(find_value.id_task) 
+
+            if data.Debug:
+                print(f"low_value: {low_value}")
+                print(f"high_value: {hight_value}")
+                print(f"med: {med}")
 
             if task_id == id:
                 return find_value

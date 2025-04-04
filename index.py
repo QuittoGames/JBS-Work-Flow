@@ -125,7 +125,7 @@ async def main():
     if not tool.is_alert_running(PID = data_Local.alert_pid):  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
         tool.start_alert_process(data_Local)
         if data_Local.Debug: print(f"🚀 alert.py iniciado! iniciado com PID: {data_Local.alert_pid}")  # Print para debug
-    if data_Local.Debug: await asyncio.create_task(tool.start_exit_systhen(data_Local))
+    await asyncio.create_task(tool.start_exit_systhen(data_Local)) # In Dev
     await asyncio.create_task(Start())
 
 if __name__ == "__main__":

@@ -12,6 +12,8 @@ from requests import get
 from time import sleep
 from datetime import datetime
 import subprocess
+import atexit
+from psutil import pid_exists
 
 @dataclass
 class tool:
@@ -23,10 +25,18 @@ class tool:
     
     async def verify_modules():
         try:
-            #Uso Do modules por txt
+            # #Uso Do modules por txt
             req_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "modules", "requirements.txt"))
             subprocess.run([sys.executable, "-m", "pip", "install", "-r", req_path], check=True)
-            return
+
+            #Teste De Novo metodo de instaçao de modulos
+            # for module in data.modules:
+            #     try:
+            #         __import__(module)
+            #     except ImportError:
+            #         subprocess.run([sys.executable, "-m", "pip", "install", module])
+            # return
+        
         except Exception as E:
             print(f"Erro Na Verificaçao De Modulos, Erro: {E}")
             return
@@ -149,8 +159,9 @@ class tool:
         except Exception as E:
             print(f"Erro Al Inicar Loop De Verificaçao, Eroo: {E}")
             return
-    
-    exit_progarm = lambda PID: os.kill(PID,9) 
+
+    exit_progarm = lambda PID: os.kill(PID,signal.SIGTERM) 
+
         
     async def format_dates(data_local:data):
         formatted_date = []
@@ -207,10 +218,44 @@ class tool:
     
 
     #Dev Function
+
+    # Ja ta ficado Progrmaçao Orientada A Gambiarra
     async def start_exit_systhen(data_local:data):
-        signal.signal(signal.SIGINT, lambda signum, frame: tool.exit_progarm(data_local))
-        return
-              
+        async def exit_handler():
+            """Chamado antes de o programa fechar"""
+            if data_local.alert_pid is not None:
+                if pid_exists(data_local.alert_pid): 
+                    try:
+                        await tool.exit_progarm(data_local.alert_pid)
+                    except ProcessLookupError:
+                        print(f"⚠️ Process {data_local.alert_pid} já foi encerrado.")
+                    except PermissionError:
+                        print("⚠️ Sem permissão para encerrar o processo.")
+                    except Exception as e:
+                        print(f"❌ Erro ao encerrar processo: {e}")
+            else:
+                print("⚠️ Nenhum PID válido para encerrar.")
+
+        def sync_exit_handler(signum, frame):
+            """Adaptador para sinais, chama a função assíncrona corretamente"""
+            asyncio.get_event_loop().create_task(exit_handler())
+
+        # Configura sinais corretamente
+        signal.signal(signal.SIGINT, sync_exit_handler)
+        signal.signal(signal.SIGTERM, sync_exit_handler)
+
+        # Executa exit_handler ao sair normalmente
+        def safe_exit():
+            try:
+                loop = asyncio.new_event_loop()  # Cria um novo loop
+                asyncio.set_event_loop(loop)
+                loop.run_until_complete(exit_handler())
+                loop.close()
+            except Exception as e:
+                print(f"Erro ao fechar corretamente: {e}")
+
+        atexit.register(safe_exit)  # Usa o novo loop para rodar exit_handler()
+                
     async def show_clock():
         while True:
             tool.clear_screen()

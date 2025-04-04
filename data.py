@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 from datetime import datetime
 import platform
+import subprocess
 
 @dataclass
 class data:
     modules_local = ["ToDo","IA_Ollama"]
+    modules = ["requests","winotify"]
     Debug = False
     name = "JBS Work Flow"
     Odette_URL = "https://alunos.igerminare.org.br/"
