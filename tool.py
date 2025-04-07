@@ -15,6 +15,9 @@ import subprocess
 import atexit
 from psutil import pid_exists
 import pyautogui as pg
+import numpy as np
+import cv2
+import mss
 
 @dataclass
 class tool:
@@ -178,15 +181,53 @@ class tool:
                 print(f"Item inesperado encontrado: {i}")
 
         data_local.date = formatted_date  
+
+    @staticmethod
+    def Finda_img(target, confianca=0.8):
+        print(f"Procurando a imagem: {target}")
+        with mss.mss() as sct:
+            screenshot = np.array(sct.grab(sct.monitors[1]))
+            screenshot = cv2.cvtColor(screenshot, cv2.COLOR_BGRA2BGR)
+
+            imagem = cv2.imread(target)
+            if imagem is None:
+                print("Erro: imagem não encontrada no caminho fornecido.")
+                return None
+
+            resultado = cv2.matchTemplate(screenshot, imagem, cv2.TM_CCOEFF_NORMED)
+            _, max_val, _, max_loc = cv2.minMaxLoc(resultado)
+
+            print(f"Confiança detectada: {max_val}")
+
+            if max_val >= confianca:
+                centro_x = max_loc[0] + imagem.shape[1] // 2
+                centro_y = max_loc[1] + imagem.shape[0] // 2
+                print(f"Imagem encontrada! Coordenadas: ({centro_x}, {centro_y})")
+                return centro_x, centro_y
+            else:
+                print("Imagem não encontrada com confiança suficiente.")
+                return None
             
     def AutoGui_classrom_altert(data_local:data):
         if not data_local.script_auto_gui:return
         try:
             tool.start_web(url=data_local.Odette_URL, data_local=data_local)
             sleep(10)
-            pg.click(x=1087, y=550)
-            sleep(1)
-            pg.click(x=941, y=877)
+
+            # Procurando a imagem com a nova função
+            postion = tool.Finda_img("icons/5_estrelas.png", confianca=0.7)
+            if data_local.Debug:print("Valor da variável posicao:", postion)
+
+            if postion:
+                if data_local.Debug:print("Achei a imagem! Vou continuar o processo...")
+                pg.click(x=1087, y=550)  # Clicar nas estrelas
+                sleep(1)
+                pg.click(x=941, y=877)  # Clicar no botão de avaliar
+                return
+            else:
+                if data_local.Debug:print("Não achei a imagem! Vou mandar notificação...")
+                tool.Notification(name="Avaliçao De Aula",descri="Erro Avaliar A Aula, Provavelmente O Profesor Nao Abriu A Aula")
+                        
         except Exception as E:
             print(f"Erro Al Execultar Altomaçao, Erro: {E}")
 
