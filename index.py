@@ -65,7 +65,8 @@ async def Config_Main():
     print("1. Ativar Dev Mode")
     print("2. Mudar Nome Do App")
     print("3. App Info")
-    print("4. Voltar")
+    print("4. Ativar Script De UI")
+    print("5. Voltar")
     c = input("Digite sua resposta: ").lower().strip()
 
     if c == "1":
@@ -93,6 +94,27 @@ async def Config_Main():
         Show_PID_Info(data_local=data_Local,PID=data_Local.alert_pid)
         return
     elif c == "4":
+        tool.clear_screen()
+        if data_Local.Debug:print(f"script_auto_gui: {data_Local.script_auto_gui}")
+        print("\n⚠️  MODO AUTOMÁTICO: AVISO IMPORTANTE ⚠️\n")
+        print("Ativar este modo pode causar a execução de ações possivelmente indesejadas.")
+        print("Ao ser ativado, toda vez que a notificação for acionada,")
+        print("uma ação automática será executada usando o mouse e o navegador.\n")
+        
+        c = input("Deseja continuar? (y/n): ").strip().lower()
+        try:
+            if c != "n" and c != "".split():
+                data_Local.script_auto_gui = True
+                print("\n✅ Modo automático ativado com sucesso.")
+                sleep(2)
+                await Start()
+                return
+            print("\n❌ Modo automático não foi ativado.")
+            return
+        except Exception as E:
+            print(f"Erro Al Acionar script Automatico, Erro: {E}")
+
+    elif c == "5":
         await asyncio.create_task(Start())
         return
     else:

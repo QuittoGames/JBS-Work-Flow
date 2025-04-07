@@ -14,6 +14,7 @@ from datetime import datetime
 import subprocess
 import atexit
 from psutil import pid_exists
+import pyautogui as pg
 
 @dataclass
 class tool:
@@ -149,6 +150,7 @@ class tool:
                 if (int(hour),int(minutes)) in data_local.date:
                     if data_local.Debug:print("🔔 Notificaçao!")
                     tool.Notification(name="Avalie A Aula !!!",descri="Avalie A Aula !!!")
+                    tool.AutoGui_classrom_altert(data_local)
             except Exception as E:
                 print(f"Erro Al Verificar Horario: {E}")
 
@@ -177,6 +179,17 @@ class tool:
 
         data_local.date = formatted_date  
             
+    def AutoGui_classrom_altert(data_local:data):
+        if not data_local.script_auto_gui:return
+        try:
+            tool.start_web(url=data_local.Odette_URL, data_local=data_local)
+            sleep(10)
+            pg.click(x=1087, y=550)
+            sleep(1)
+            pg.click(x=941, y=877)
+        except Exception as E:
+            print(f"Erro Al Execultar Altomaçao, Erro: {E}")
+
     def menu(data_Local:data):
         tool.clear_screen()
         print("_"*30 + data_Local.name + "_"*30)
