@@ -111,5 +111,13 @@ O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se t
 
 # 🛠️ Equipe
 
-Quittoツ : Dev | Fundador | [Instagram](https://www.instagram.com/quittooficial/) | [GitHub](https://github.com/QuittoGames)
-MagaNinjaPadovani: Dev Scripts | Dev | [Instagram](https://www.instagram.com/meganinjapadovani/)
+**Quittoツ**  
+*Dev | Fundador*  
+[Instagram](https://www.instagram.com/quittooficial/) | [GitHub](https://github.com/QuittoGames)
+
+---
+
+**MagaNinjaPadovani**  
+*Dev Scripts | Dev*  
+[Instagram](https://www.instagram.com/meganinjapadovani/)
+
