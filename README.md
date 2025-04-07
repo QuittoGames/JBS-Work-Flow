@@ -109,5 +109,7 @@ A menção ao nome foi apenas ilustrativa, pois a aplicação foi desenvolvida c
 
 O nome do aplicativo **pode ser alterado a qualquer momento** e ele poderá se tornar um projeto independente, pertencente exclusivamente ao seu criador.  
 
+# 🛠️ Equipe
 
-
+Quittoツ : Dev | Fundador | [Instagram](https://www.instagram.com/quittooficial/) | [GitHub](https://github.com/QuittoGames)
+MagaNinjaPadovani: Dev Scripts | Dev | [Instagram](https://www.instagram.com/meganinjapadovani/)
