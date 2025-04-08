@@ -9,7 +9,7 @@ class data:
     modules = ["requests","winotify"]
     Debug = False
     name = "JBS Work Flow"
-    script_auto_gui:bool = True # Por Padrao vem desabilitada
+    script_auto_gui:bool = False # Por Padrao vem desabilitada
     Odette_URL = "https://alunos.igerminare.org.br/"
     ano = datetime.now().year
     mes = datetime.now().month

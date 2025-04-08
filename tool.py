@@ -223,8 +223,6 @@ class tool:
             pg.write("https://alunos.igerminare.org.br/")
             sleep(0.5)
             pg.press('enter')
-            sleep(5)
-            pg.click(x=1920,y = 1080)
             return
         except Exception as E:
             print(f"Erro Al Execultar Script De PyAutoGui, Erro: {E}")

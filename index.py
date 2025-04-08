@@ -27,7 +27,7 @@ async def Start():
         tool.clear_screen()
         tool.start_web(data_Local.Odette_URL,data_local=data_Local)
         print(f"Iniciando: {data_Local.Odette_URL}")
-        await asyncio.sleep(5)
+        await asyncio.sleep(2)
         await asyncio.create_task(Start())
         return
     elif c == "2":
@@ -132,8 +132,8 @@ def Show_PID_Info(data_local:data, PID:int):
     print(f"📅  **Data**: {data_local.day}/{data_local.mes}/{data_local.ano}")
     print(f"⏳  **Status**: {'Ativo' if PID != 0 else 'Inativo'}")
     print(f"🔑  **Licença**: MIT")
-    print(f"👨‍💻  **Criador**: Quitto")
-    print(f"👨‍💻  **")
+    print(f"👨‍💻  **Criador**: Quitto | Dev")
+    print(f"👨‍💻  **Dev: 👨‍💻 Maga Ninja Padovanni | Dev De Automaçao | 👨‍💻 Quitto | Dev")
 
     c = input("Digite qualquer coisa para voltar: ")
     tool.clear_screen()
