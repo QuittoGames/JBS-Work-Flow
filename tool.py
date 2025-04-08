@@ -208,13 +208,34 @@ class tool:
                 print("Imagem não encontrada com confiança suficiente.")
                 return None
             
+    def PyAutoGui_script():
+        #Code By Mega Ninja Padovani
+        try:
+            # tool.start_web(url=data_local.Odette_URL, data_local=data_local)
+            tool.Notification(name="NÃO mexa no seu PC",descri="vamos começar a autoavaliação")
+            sleep(15)
+            pg.press('win')
+            sleep(1)
+            pg.write("crome")
+            sleep(0.5)
+            pg.press('enter')
+            sleep(2)
+            pg.write("https://alunos.igerminare.org.br/")
+            sleep(0.5)
+            pg.press('enter')
+            sleep(5)
+            pg.click(x=1920,y = 1080)
+            return
+        except Exception as E:
+            print(f"Erro Al Execultar Script De PyAutoGui, Erro: {E}")
+            return
+
+            
     def AutoGui_classrom_altert(data_local:data):
         if not data_local.script_auto_gui:return
         try:
             #Code By Mega Ninja Padovani
-            tool.start_web(url=data_local.Odette_URL, data_local=data_local)
-            sleep(10)
-
+            tool.PyAutoGui_script()
             # Procurando a imagem com a nova função
             postion = tool.Finda_img("icons/5_estrelas.png", confianca=0.7)
             if data_local.Debug:print("Valor da variável posicao:", postion)
@@ -235,8 +256,7 @@ class tool:
     def reset_altert_prosses(data_local:data):
         if data_local.alert_pid == 0: return
         try:
-            # tool.exit_progarm(data_local.alert_pid)
-            os.kill(data_local.alert_pid, -9)
+            tool.exit_progarm(data_local.alert_pid)
             if data_local.Debug:print(f"Prosseso alert.py com PID: {data_local.alert_pid} Foi Finlizado Com Susseso!")
             data_local.alert_pid = 0
             new_prosses = tool.start_alert_process(data_local)
