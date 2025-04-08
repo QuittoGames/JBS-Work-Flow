@@ -105,6 +105,7 @@ async def Config_Main():
         try:
             if c != "n" and c != "".split():
                 data_Local.script_auto_gui = True
+                tool.reset_altert_prosses(data_Local)
                 print("\n✅ Modo automático ativado com sucesso.")
                 sleep(2)
                 await Start()

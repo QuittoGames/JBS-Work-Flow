@@ -211,6 +211,7 @@ class tool:
     def AutoGui_classrom_altert(data_local:data):
         if not data_local.script_auto_gui:return
         try:
+            #Code By Mega Ninja Padovani
             tool.start_web(url=data_local.Odette_URL, data_local=data_local)
             sleep(10)
 
@@ -231,12 +232,26 @@ class tool:
         except Exception as E:
             print(f"Erro Al Execultar Altomaçao, Erro: {E}")
 
+    def reset_altert_prosses(data_local:data):
+        if data_local.alert_pid == 0: return
+        try:
+            # tool.exit_progarm(data_local.alert_pid)
+            os.kill(data_local.alert_pid, -9)
+            if data_local.Debug:print(f"Prosseso alert.py com PID: {data_local.alert_pid} Foi Finlizado Com Susseso!")
+            data_local.alert_pid = 0
+            new_prosses = tool.start_alert_process(data_local)
+            return 
+        except Exception as E:
+            print(f"Erro Al renicar O Prosseso, Erro: {E}")
+            return
+
     def menu(data_Local:data):
         tool.clear_screen()
         print("_"*30 + data_Local.name + "_"*30)
         print(f"{data.day}/{data.mes}/{data.ano}")
         print(f"Sistema Operacional: {data.OS_client}")
         if data_Local.Debug:print("🖥️"+"  "+ f"alert.py: PID: {data_Local.alert_pid}")
+        if data_Local.Debug:print("🖥️" +"  "+ f"Script Auto Gui: {data_Local.script_auto_gui}")
         if data_Local.Debug:print("🔧 Dev Mode")
         print("_"*73)
         return
