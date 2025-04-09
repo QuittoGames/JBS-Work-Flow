@@ -244,9 +244,10 @@ class tool:
                 sleep(1)
                 pg.click(x=941, y=877)  # Clicar no botão de avaliar
                 return
-            else:
-                if data_local.Debug:print("Não achei a imagem! Vou mandar notificação...")
-                tool.Notification(name="Avaliçao De Aula",descri="Erro Avaliar A Aula, Provavelmente O Profesor Nao Abriu A Aula")
+            
+            if data_local.Debug:print("Não achei a imagem! Vou mandar notificação...")
+            tool.Notification(name="Avaliçao De Aula",descri="Erro Avaliar A Aula, Provavelmente O Profesor Nao Abriu A Aula")
+            return
                         
         except Exception as E:
             print(f"Erro Al Execultar Altomaçao, Erro: {E}")

@@ -16,7 +16,7 @@ data_Local = data()
 #Runtime
 async def Start():
     tool.menu(data_Local)
-    print("1. Assesar Odette")
+    print("1. Acessar Odette")
     print("2. Tasks")
     print("3. Config")
     if data_Local.Debug:print("5. IA Local")
