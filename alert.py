@@ -5,6 +5,8 @@ from time import sleep
 # Função que pode ser chamada para rodar a lógica do alerta
 def start_alert_process(data_sub):
     try:
+        # Carrega as configurações do arquivo
+        tool.load_config(data_sub)
         tool.alert_to_to_assess_classroom(data_sub)
     except Exception as E:
         print(f"Erro ao executar o alerta: {E}")

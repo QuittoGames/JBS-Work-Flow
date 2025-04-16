@@ -18,6 +18,7 @@ import pyautogui as pg
 import numpy as np
 import cv2
 import mss
+import json
 
 @dataclass
 class tool:
@@ -223,6 +224,7 @@ class tool:
             pg.write("https://alunos.igerminare.org.br/")
             sleep(0.5)
             pg.press('enter')
+            sleep(3)
             return
         except Exception as E:
             print(f"Erro Al Execultar Script De PyAutoGui, Erro: {E}")
@@ -235,17 +237,16 @@ class tool:
             #Code By Mega Ninja Padovani
             tool.PyAutoGui_script()
             # Procurando a imagem com a nova função
+            sleep(10)
             postion = tool.Finda_img("icons/5_estrelas.png", confianca=0.7)
             if data_local.Debug:print("Valor da variável posicao:", postion)
 
             if postion:
-                if data_local.Debug:print("Achei a imagem! Vou continuar o processo...")
                 pg.click(x=1087, y=550)  # Clicar nas estrelas
                 sleep(1)
                 pg.click(x=941, y=877)  # Clicar no botão de avaliar
                 return
-            
-            if data_local.Debug:print("Não achei a imagem! Vou mandar notificação...")
+        
             tool.Notification(name="Avaliçao De Aula",descri="Erro Avaliar A Aula, Provavelmente O Profesor Nao Abriu A Aula")
             return
                         
@@ -259,6 +260,7 @@ class tool:
             if data_local.Debug:print(f"Prosseso alert.py com PID: {data_local.alert_pid} Foi Finlizado Com Susseso!")
             data_local.alert_pid = 0
             new_prosses = tool.start_alert_process(data_local)
+            data_local.alert_pid = new_prosses.pid
             return 
         except Exception as E:
             print(f"Erro Al renicar O Prosseso, Erro: {E}")
@@ -350,3 +352,37 @@ class tool:
             print(f"Horario: {datetime.now().strftime("%H:%M:%S")}")
             await asyncio.sleep(1)
         return
+
+    @staticmethod
+    def save_config(data_local:data):
+        try:
+            with open("config.txt", "w") as f:
+                # Salva cada configuração em uma linha
+                f.write(f"script_auto_gui={data_local.script_auto_gui}\n")
+                f.write(f"date={','.join([f'{h},{m}' for h,m in data_local.date])}\n")
+                f.write(f"alert_pid={data_local.alert_pid}\n")
+        except Exception as E:
+            print(f"Erro ao salvar configurações: {E}")
+
+    @staticmethod
+    def load_config(data_local:data):
+        try:
+            if os.path.exists("config.txt"):
+                with open("config.txt", "r") as f:
+                    for line in f:
+                        if "=" in line:
+                            key, value = line.strip().split("=")
+                            if key == "script_auto_gui":
+                                data_local.script_auto_gui = value.lower() == "true"
+                            elif key == "date":
+                                # Converte a string de volta para lista de tuplas
+                                dates = []
+                                for pair in value.split(","):
+                                    if pair:
+                                        h, m = map(int, pair.split(","))
+                                        dates.append((h, m))
+                                data_local.date = dates
+                            elif key == "alert_pid":
+                                data_local.alert_pid = int(value)
+        except Exception as E:
+            print(f"Erro ao carregar configurações: {E}")

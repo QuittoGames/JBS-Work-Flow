@@ -133,7 +133,7 @@ def Show_PID_Info(data_local:data, PID:int):
     print(f"⏳  **Status**: {'Ativo' if PID != 0 else 'Inativo'}")
     print(f"🔑  **Licença**: MIT")
     print(f"👨‍💻  **Criador**: Quitto | Dev")
-    print(f"👨‍💻  **Dev: 👨‍💻 Maga Ninja Padovanni | Dev De Automaçao | 👨‍💻 Quitto | Dev")
+    print("👨‍💻  **Dev de Automação** | Quitto | Dev | 🥷 **Mega Ninja Padovanni** | Dev de Automação")
 
     c = input("Digite qualquer coisa para voltar: ")
     tool.clear_screen()
