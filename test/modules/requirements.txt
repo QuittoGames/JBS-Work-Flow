@@ -1,0 +1,4 @@
+requests
+winotify
+opencv-python
+mss
