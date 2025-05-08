@@ -168,8 +168,7 @@ class tool:
             print(f"Erro Al Inicar Loop De Verificaçao, Eroo: {E}")
             return
 
-    exit_progarm = lambda PID: os.kill(PID,signal.SIGTERM) 
-
+    exit_progarm = lambda PID: os.kill(PID,signal.SIGTERM)
         
     async def format_dates(data_local:data):
         formatted_date = []
@@ -231,12 +230,12 @@ class tool:
         except Exception as E:
             print(f"Erro Al Execultar Script De PyAutoGui, Erro: {E}")
             return
-        
+
     def AutoGui_classrom_altert(data_local:data):
         if not data_local.script_auto_gui:return
         try:
             #Code By Mega Ninja Padovani
-            start_return_value = tool.setStarts()
+            #start_return_value = tool.setStarts()
             tool.PyAutoGui_script()
             # Procurando a imagem com a nova função
             sleep(10)
@@ -244,9 +243,9 @@ class tool:
             if data_local.Debug:print("Valor da variável posiacao:", postion)
 
             if postion:
-                pg.click(x=1087, y=550)  # Clicar nas estrelas
+                pg.click(x=1087, y=545)  # Clicar nas estrelas
                 sleep(1)
-                pg.click(x=941, y=877)  # Clicar no botão de avaliar
+                pg.click(x=941, y=870)  # Clicar no botão de avaliar
                 return
         
             tool.Notification(name="Avaliçao De Aula",descri="Erro Avaliar A Aula, Provavelmente O Profesor Nao Abriu A Aula")

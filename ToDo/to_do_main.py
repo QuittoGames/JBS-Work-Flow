@@ -40,4 +40,6 @@ def To_Do_Main(data_Local:data):
 
 if data.Debug:
     print("Iniciando To_Do_Main...")
-To_Do_Main(data)
+
+if __name__ == "__main__":
+    To_Do_Main(data)

@@ -140,20 +140,6 @@ def Show_PID_Info(data_local:data, PID:int):
     asyncio.create_task(Start())
     return
 
-def Config_Wingts(data_local:data):
-    tool.menu(data_Local)
-    print("1. Ativar Wigets")
-    print("2. Desativar Wingets")
-    print("3. Voltar")
-    c = input("Digite Sua Opiçao: ").lower().strip()
-
-    if c == "1":
-        pass
-    elif c =="2":
-        pass
-    
-    return
-
 
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():

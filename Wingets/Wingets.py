@@ -1,15 +1,24 @@
 from dataclasses import dataclass
 import subprocess
+from random import randint
+from time import sleep
 import os
 
 @dataclass
 class Wingets:
+    ID: int
     name: str
     path: str
 
-    def start(self):
+    def start(self,path:str):
         if os.path.exists(self.path):
-            process = subprocess.Popen(["python", self.path], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            try:
+                prosses = subprocess.Popen(["python", self.path], creationflags=subprocess.CREATE_NEW_CONSOL)
+                print(prosses)
+                sleep(100)
+            except Exception as E:
+                print(f"Erro Al Inicar Winget, Erro: {E}")
+            
             return
         print(f"❌ Caminho não encontrado: {self.path}")
 

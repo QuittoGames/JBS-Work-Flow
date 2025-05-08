@@ -120,4 +120,3 @@ Dev | Fundador
 **MagaNinjaPadovani**  
 Dev Scripts | Dev  
 [Instagram](https://www.instagram.com/meganinjapadovani/)
-
