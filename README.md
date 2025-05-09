@@ -1,21 +1,50 @@
 # JBS Work Flow
 
 
-# Notas da Nova Versão - Implemetaçao De Serviços (Modulos) 3.1v 
+# Notas da Nova Versão - Script Automatico De Avaliaçao 4.0v 
 
-- O módulo **To Do** foi implemetado no **JBS Work Flow**.
-- A versão **3.1v ** pode apresentar comportamentos inesperados.
-- O **To Do** permite o gerenciamento de tarefas com funcionalidades de:
-  - Adicionar, remover e visualizar tarefas.
-  - Configuração de notificações baseadas em tempo.
-- O sistema envia **notificações automáticas** para tarefas em horários específicos.
-- O módulo é **interativo** com um menu para gerenciar tarefas e configurações do aplicativo.
-- O Modulo De IA Foi colocado e ultiliza dos serviços do [Ollama](https://ollama.com/) e esta em fases de testes porem pode ser assesado com o modo Dev disponivel na aba de Configuraçoes
+## ✨ Novidades
 
-## Visão Geral
+### 🤖 Script Automático de Autoavaliação
+- Implementado novo sistema de automação para executar tarefas sem intervenção manual
+- Por padrão, o recurso vem **desabilitado** por questões de segurança
+- Pode ser ativado através do menu de Configurações (opção 4)
+- Executa ações automáticas usando mouse e navegador quando as notificações são acionadas
 
-O **JBS Work Flow** é um acelerador de fluxo de trabalho desenvolvido para facilitar as atividades na escola, principalmente através de notificações que lembram os usuários de avaliar as aulas em horários pré-definidos. O sistema utiliza tarefas assíncronas para gerenciar o menu interativo e um processo em segundo plano para monitorar o horário e disparar notificações automaticamente.
+### 🎮 Sistema de Controle
+- Novo canal de testes disponível para experimentar funcionalidades em desenvolvimento
+- Interface de controle aprimorada para gerenciamento de tarefas
+- Monitoramento avançado do status das automações
 
+### 🖼️ Widgets (Preview)
+- Iniciada a implementação de widgets na versão principal
+- Permite visualização rápida de informações importantes sem abrir o menu principal
+- Acesso simplificado às funcionalidades mais utilizadas
+- Configuração personalizada dos widgets através do menu de configurações
+- Ainda em fase inicial de desenvolvimento
+
+## 📋 Funcionalidades Mantidas
+### Melhorias da versão 3.1
+- **Módulo To Do**: Gerenciamento completo de tarefas (adicionar, remover, visualizar)
+- **Notificações**: Configuração baseada em tempo com alertas automáticos
+- **Módulo IA**: Integração com serviços Ollama (acessível via modo Dev)
+
+## ⚠️ Observações
+- Esta versão pode apresentar comportamentos inesperados por estar em fase de testes
+- Recomendamos fazer backup dos dados antes de atualizar
+- Código da versão: **K2023_4_H1_30_test**
+
+## 🔧 Como Ativar o Script Automático
+1. Acesse o menu principal
+2. Selecione a opção "3. Config"
+3. Escolha "4. Ativar Script De UI"
+4. Confirme a ativação digitando "y"
+
+## 🔜 Próximos Passos
+- Criaçao De Um Sistema De Wingets
+- Expansão das funcionalidades automáticas
+- Melhorias na integração com IA
+  
 ## Funcionalidades
 
 - **Notificações Automáticas:** Envia alertas (ex.: "Avalie A Aula !!!") em horários específicos para lembrar os usuários de avaliar a aula.
