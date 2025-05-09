@@ -10,12 +10,10 @@ class Wingets:
     name: str
     path: str
 
-    def start(self,path:str):
+    def start(self):
         if os.path.exists(self.path):
             try:
-                prosses = subprocess.Popen(["python", self.path], creationflags=subprocess.CREATE_NEW_CONSOL)
-                print(prosses)
-                sleep(100)
+                prosses = subprocess.Popen(["python", self.path], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP, shell= False)
             except Exception as E:
                 print(f"Erro Al Inicar Winget, Erro: {E}")
             

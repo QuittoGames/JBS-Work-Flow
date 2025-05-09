@@ -35,16 +35,17 @@ def activeWinget():
     winget_tool.showWingets(winget_data)
     
     ID_winget = input("Digite O ID do Winget: ").lower().strip()
+    ID_winget = int(ID_winget)
     try:
         #Refatorara Para pesquisa binaria
-        winget_local = Wingets(winget_tool.getWinget(ID_winget,winget_data))
+        winget_local = winget_tool.getWinget(ID_winget,winget_data)
         if winget_local is None:
             print("Winget Nao Pode Ser Encotrado!!")
             sleep(5)
             WingetsConfig()
             return
 
-        winget_local.start(self = winget_local,path = winget_local.path)
+        winget_local.start()
     except Exception as E:
         print(f"Erro Al Iniciar Winget, Erro: {E}")
         sleep(1000)
