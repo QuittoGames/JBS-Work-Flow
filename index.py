@@ -2,6 +2,7 @@ from time import sleep
 from data import data
 from datetime import datetime
 from tool import tool
+from services_manager import Services
 import asyncio
 import subprocess
 import os
@@ -51,8 +52,7 @@ async def Start():
         tool.clear_screen()
         return
     elif c == "5" and data_Local.Debug:
-        from IA_Ollama.index_IA import main
-        main(data_global=data_Local)
+        Services.start_IA(data_Local)
         await Start()
         return
 
@@ -143,13 +143,22 @@ def Show_PID_Info(data_local:data, PID:int):
 
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():
-    if not data_Local.Debug:asyncio.create_task(tool.verify_modules())
-
     asyncio.create_task(tool.add_path_modules(data_Local))
-    asyncio.create_task(tool.format_dates(data_Local))
-    if not tool.is_alert_running(PID = data_Local.alert_pid):  # A função is_alert_running precisa ser implementada para verificar se o alerta já está em execução
-        tool.start_alert_process(data_Local)
-        if data_Local.Debug: print(f"🚀 alert.py iniciado! iniciado com PID: {data_Local.alert_pid}")  # Print para debug
+
+    #Verfica Os Argumentos
+    args = tool.set_args(data_Local)
+    if args.auto_avali:
+        await asyncio.create_task(Services.start_auto_avali(data_Local))
+        return
+    elif args.IA:
+        Services.start_IA(data_Local)
+        return
+    elif args.ToDo:
+        pass
+
+    if not data_Local.Debug:asyncio.create_task(tool.verify_modules())
+    asyncio.create_task(Services.start_auto_avali(data_Local)) # Inicia Serviço De Auto Avaliçao 
+
     await asyncio.create_task(tool.start_exit_systhen(data_Local)) # In Dev
     await asyncio.create_task(Start())
 

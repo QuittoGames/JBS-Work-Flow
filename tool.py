@@ -21,6 +21,7 @@ import mss
 import json
 import tkinter as tk
 from PySide6 import QtWidgets
+import argparse
 
 @dataclass
 class tool:
@@ -94,6 +95,14 @@ class tool:
         tread.start()
         return tread
     
+    def set_args(data_local:data):
+        parser = argparse.ArgumentParser(prog=data_local.name ,description="JBS Work Flow | Sistema desevolvido para almento de produtividade dos alunos da Germinare TECH | \n By Quitto (Dev) & Padovanni (Scripts)|")
+        parser.add_argument("--auto_avali",action="store_true")
+        parser.add_argument("--IA",action="store_true")
+        # parser.add_argument("--Winget",action="store_true")
+        parser.add_argument("--ToDo",action="store_true")
+        return parser.parse_args()
+
     def Retun_reponse(url):
         tool.clear_screen()
         try:
@@ -114,7 +123,8 @@ class tool:
      
     def start_alert_process(data_Local:data):
         try:
-            alert_sub = subprocess.Popen(["python", "alert.py"], creationflags=subprocess.CREATE_NO_WINDOW)
+            file_path = os.path.abspath("alert.py")
+            alert_sub = subprocess.Popen(["python", file_path], creationflags=subprocess.CREATE_NO_WINDOW)
             data_Local.alert_pid = alert_sub.pid # Armazena o PID
             if data_Local.Debug: 
                 print("🚀 alert.py iniciado!") # Este print foi colocando somente para use dev trocando no score code 
