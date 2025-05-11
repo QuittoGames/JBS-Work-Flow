@@ -144,7 +144,9 @@ def Show_PID_Info(data_local:data, PID:int):
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():
     asyncio.create_task(tool.add_path_modules(data_Local))
+    
 
+    # Verificar erro pro entrado CLI (alert.py not start)
     #Verfica Os Argumentos
     args = tool.set_args(data_Local)
     if args.auto_avali:
