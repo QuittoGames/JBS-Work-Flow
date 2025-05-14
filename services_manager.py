@@ -27,8 +27,8 @@ class Services:
             return
 
     def start_ToDo(data_Local:data):
+        from ToDo.to_do_main import To_Do_Main
         try:
-            from ToDo.to_do_main import To_Do_Main
             To_Do_Main(data_Local=data_Local)
         except ImportError as e:
             print(f"Erro ao importar ToDo: {e}")

@@ -144,21 +144,22 @@ def Show_PID_Info(data_local:data, PID:int):
 #Inisalizar Tarefas Asincronas antes da inicilizao do app
 async def main():
     asyncio.create_task(tool.add_path_modules(data_Local))
-    
+    if not data_Local.Debug:asyncio.create_task(tool.verify_modules())
 
     # Verificar erro pro entrado CLI (alert.py not start)
     #Verfica Os Argumentos
     args = tool.set_args(data_Local)
     if args.auto_avali:
         await asyncio.create_task(Services.start_auto_avali(data_Local))
+        await asyncio.create_task(Services.start_auto_avali(data_Local)) # Inicia Serviço De Auto Avaliçao 
         return
     elif args.IA:
         Services.start_IA(data_Local)
         return
     elif args.ToDo:
+        Services.start_ToDo(data_Local)
         pass
 
-    if not data_Local.Debug:asyncio.create_task(tool.verify_modules())
     asyncio.create_task(Services.start_auto_avali(data_Local)) # Inicia Serviço De Auto Avaliçao 
 
     await asyncio.create_task(tool.start_exit_systhen(data_Local)) # In Dev
@@ -169,7 +170,7 @@ if __name__ == "__main__":
         asyncio.run(main())
     except RuntimeError:
         loop = asyncio.get_event_loop()
-        loop.run_until_complete(main())
+        loop.run_until_complete(main())     
 
 
 #By: Gustavo Quitto
