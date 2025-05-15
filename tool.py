@@ -253,7 +253,7 @@ class tool:
             if data_local.Debug:print("Valor da variável posiacao:", postion)
 
             if postion:
-                pg.click(x=1087, y=545)  # Clicar nas estrelas
+                pg.click(x=1087, y=542)  # Clicar nas estrelas
                 sleep(1)
                 pg.click(x=941, y=870)  # Clicar no botão de avaliar
                 return
