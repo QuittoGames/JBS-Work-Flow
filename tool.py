@@ -87,7 +87,7 @@ class tool:
             print(f"Erro ao exibir a notificação: {e}")
             return None
 
-    def start_tread(fuction,parameter):
+    def start_tread(fuction,parameter): 
         if not isinstance(parameter, tuple):
             parameter = (parameter,) 
         tread = threading.Thread(target=fuction,args=parameter)
