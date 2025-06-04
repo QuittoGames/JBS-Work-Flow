@@ -9,16 +9,14 @@ from winget_tool import winget_tool
 from wingets_data import winget_data
 from Wingets import Wingets
 
-data_local = data()
-
-def WingetsConfig():
-    tool.menu(data)
+def WingetsConfig(data_local:data):
+    tool.menu(data_local)
     print("1. Run Wingets")
     print("2. Return")
     c = input("Digite Sua Opiçao: ")
     
     if c == "1":
-        activeWinget()
+        activeWinget(data_local=data_local)
         sleep(1)
         WingetsConfig()
         return
@@ -29,8 +27,8 @@ def WingetsConfig():
         return
 
 
-def activeWinget():
-    tool.menu(data)
+def activeWinget(data_local:data):
+    tool.menu(data_local)
     print("Wingets: ")
     winget_tool.showWingets(winget_data)
     

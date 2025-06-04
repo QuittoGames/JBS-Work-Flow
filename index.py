@@ -21,6 +21,7 @@ async def Start():
     print("2. Tasks")
     print("3. Config")
     if data_Local.Debug:print("5. IA Local")
+    if data_Local.Debug:print("6. Winget")
     print("4. Exit")
     c = input("Digite Sua Resosta: ").lower().strip()
 
@@ -53,6 +54,12 @@ async def Start():
         return
     elif c == "5" and data_Local.Debug:
         Services.start_IA(data_Local)
+        await Start()
+        return
+    elif c == "6" and data_Local.Debug:
+        #Inicar Module Do Winget
+        from Wingets.maneger import WingetsConfig
+        WingetsConfig(data_local=data_Local)
         await Start()
         return
 

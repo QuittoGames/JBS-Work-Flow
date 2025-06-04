@@ -7,7 +7,7 @@ import subprocess
 class data:
     modules_local = ["ToDo","IA_Ollama"]
     modules = ["requests","winotify","Wingets"]
-    Debug = False
+    Debug = True
     name = "JBS Work Flow"
     script_auto_gui:bool = True # Por Padrao vem desabilitada
     wingets_active:bool = False
