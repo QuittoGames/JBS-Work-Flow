@@ -157,7 +157,6 @@ async def main():
     #Verfica Os Argumentos
     args = tool.set_args(data_Local)
     if args.auto_avali:
-        await asyncio.create_task(Services.start_auto_avali(data_Local))
         await asyncio.create_task(Services.start_auto_avali(data_Local)) # Inicia Serviço De Auto Avaliçao 
         return
     elif args.IA:
